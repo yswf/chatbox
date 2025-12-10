@@ -13,7 +13,7 @@
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\" && npm run delete-sourcemaps",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
-    "build:web": "cross-env CHATBOX_BUILD_PLATFORM=web npm run build:renderer && npm run delete-sourcemaps",
+    "build:web": "cross-env CHATBOX_BUILD_PLATFORM=web npm run build:renderer",
     "delete-sourcemaps": "find ./release/app/dist/renderer -name '*.map' -type f -delete",
     "postinstall": "patch-package",
     "package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish never",
